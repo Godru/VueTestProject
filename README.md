@@ -1,4 +1,4 @@
-### Test-Vue-Project
+### Vue-Test-Project
 
 ## Project setup
 ```
