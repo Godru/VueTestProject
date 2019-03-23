@@ -1,8 +1,26 @@
 import Vue from 'vue'
-import App from './App.vue'
+import Red from './components/Red.vue'
+import Yellow from './components/Yellow.vue'
+import Green from './components/Green.vue'
 
-Vue.config.productionTip = false
+const routes = {
+      '/1': Red,
+      '/2': Yellow,
+      '/3': Green
+};
+Vue.config.productionTip = false;
 
 new Vue({
-  render: h => h(App),
-}).$mount('#app')
+    data: {
+        currentRoute: window.location.pathname
+    },
+    computed: {
+        ViewComponent () {
+            if(this.currentRoute === '/')
+                window.location.pathname = '/1';
+            return routes[this.currentRoute]
+        }
+    },
+    render (h) { return h(this.ViewComponent) },
+}).$mount('#app');
+
